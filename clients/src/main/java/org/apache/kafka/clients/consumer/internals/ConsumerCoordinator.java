@@ -302,7 +302,7 @@ public final class ConsumerCoordinator extends AbstractCoordinator {
      * Refresh the committed offsets for provided partitions.
      */
     public void refreshCommittedOffsetsIfNeeded() {
-        if (subscriptions.refreshCommitsNeeded()) {
+        //if (subscriptions.refreshCommitsNeeded()) {
             Map<TopicPartition, OffsetAndMetadata> offsets = fetchCommittedOffsets(subscriptions.assignedPartitions());
             for (Map.Entry<TopicPartition, OffsetAndMetadata> entry : offsets.entrySet()) {
                 TopicPartition tp = entry.getKey();
@@ -311,7 +311,7 @@ public final class ConsumerCoordinator extends AbstractCoordinator {
                     this.subscriptions.committed(tp, entry.getValue());
             }
             this.subscriptions.commitsRefreshed();
-        }
+        //}
     }
 
     /**
